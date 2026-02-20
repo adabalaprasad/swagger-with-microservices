@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: Gateway
+  cloud:
+    gateway:
+      routes:   
+        - id: college-attendance
+          uri: lb://COLLEGE-ATTENDANCE
+          predicates:
+            - Path=/attendance/**
+          filters:
+             - StripPrefix=1
+
+        - id: student-service
+          uri: http://localhost:2000
+          predicates:
+            - Path=/student/**
+          filters:
+            - StripPrefix=1
+      httpclient:
+        max-header-size: 16384
+  security:
+    user:
+      name: disable
+      password: disable
+      roles: disable
+      
+springdoc:
+  swagger-ui:
+    urls:
+    - name: Attendance Service
+      url: /attendance/v3/api-docs
+    - name: Student Service
+      url: /student/v3/api-docs
+    - name: Gateway Auth APIs
+      url: /v3/api-docs
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+server:
+  port: 2003
+  netty:
+    max-initial-line-length: 16384
+    

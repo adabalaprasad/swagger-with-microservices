@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: college-attendance
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+ # config:
+   # import: configserver:http://localhost:8888
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/collegeattendancedb
+  cache:
+    type: simple
+    cache-names: attendanceCache
+  datasource:
+    url: jdbc:postgresql://localhost:5432/collegeattendance
+    username: postgres
+    password: 1234
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+server:
+  port: 2002

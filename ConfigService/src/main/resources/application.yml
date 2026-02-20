@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: ConfigService
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:///C:/crepo
+  profiles:
+    active: native
+server:
+  port: 8888

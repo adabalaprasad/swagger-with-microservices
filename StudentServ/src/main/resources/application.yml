@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: StudentServ
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  config:
+    import: configserver:http://localhost:8888
+  mongodb:
+    uri: mongodb://localhost:27017/collegeattendancedb
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+server:
+  port: 2000
