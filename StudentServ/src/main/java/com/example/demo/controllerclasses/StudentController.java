@@ -37,10 +37,8 @@ public class StudentController
 
 	  @PostMapping("/add")
 	  @Operation(summary = "Add Student", description = "Create a new student record")
-	  @ApiResponses({
-	        @ApiResponse(responseCode = "200", description = "Student added successfully"),
-	        @ApiResponse(responseCode = "400", description = "Invalid student data")
-	    })
+	  @ApiResponses({@ApiResponse(responseCode = "200", description = "Student added successfully"),
+	        @ApiResponse(responseCode = "400", description = "Invalid student data")})
 	  public StudentResDTO addStudent(@Valid @RequestBody Student student) {
 
 	        Student s = service.addStudent(student);
@@ -58,12 +56,11 @@ public class StudentController
 	    }
 
 	    // ------------------ GET ALL STUDENTS ------------------
+	  
 	    @GetMapping("/all")
 	    @Operation(summary = "Get All Students", description = "Fetch all student records")
-	    @ApiResponses({
-	        @ApiResponse(responseCode = "200", description = "Students fetched successfully"),
-	        @ApiResponse(responseCode = "404", description = "No students found")
-	    })
+	    @ApiResponses({@ApiResponse(responseCode = "200", description = "Students fetched successfully"),
+	        @ApiResponse(responseCode = "404", description = "No students found")})
 	    public StudentRespDTO getAllStudents() {
 
 	        List<Student> s = service.getAllStudents();
@@ -81,6 +78,7 @@ public class StudentController
 	    }
 
 	    // ------------------ GET STUDENT BY ID ------------------
+	   
 	    @GetMapping("/{studentId}")
 	    @Operation(summary = "Get Student By ID", description = "Fetch student details using student ID")
 	    @ApiResponses({
@@ -104,6 +102,7 @@ public class StudentController
 	    }
 
 	    // ------------------ UPDATE STUDENT ------------------
+	    
 	    @PutMapping("/update/{studentId}")
 	    @Operation(summary = "Update Student", description = "Update student details by ID")
 	    @ApiResponses({
@@ -129,6 +128,7 @@ public class StudentController
 	    }
 
 	    // ------------------ DELETE STUDENT ------------------
+	    
 	    @DeleteMapping("/delete/{studentId}")
 	    @Operation(summary = "Delete Student", description = "Delete student record by ID")
 	    @ApiResponses({
